@@ -1,0 +1,24 @@
+<%- include ("../../partials/header.ejs") %>
+<%- include ("../../partials/navbar.ejs") %>
+<body>
+   <div class="container">
+        <div class="card mt-5">
+            <div class="card-header">
+                <h2 class="display-6 fs-4">Nova Categoria</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" class="d-flex" action="/categories/save">
+                    <div class="flex-grow-1 me-4">
+                        <label class="form-label">Título da categoria: </label>
+                        <input type="text" class="form-control" name="title" 
+                        placeholder="Digite uma nova categoria..." required>
+                    </div>
+                    <div class="d-flex">
+                        <button type="submit" class="btn btn-primary align-self-end">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+   </div>
+</body>
+<%- include ("../../partials/footer.ejs") %>

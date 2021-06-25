@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-secondary navbar-expandida">
+	<div class="container">
+		<a href="/" class="navbar-brand">Nat.Code</a>
+		<button id="navbarToggle" class="navbar-toggler">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNav" class="navbar-colapso colapso">
+			<ul class="navbar-nav">
+				<% categories.forEach(element=> { %>
+					<li class="nav-item">
+						<a class="nav-link" href="/category/<%=element.slug%>">
+							<%= element.title %>
+						</a>
+					</li>
+				<% }); %>
+			</ul>
+		</div>
+	</div>
+</nav>

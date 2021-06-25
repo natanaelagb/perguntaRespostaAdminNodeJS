@@ -1,0 +1,52 @@
+<%- include("../../partials/header.ejs") %>
+<%- include("../../partials/navbar.ejs") %>
+
+<body>
+    <div class="container">
+        <div class="mt-3 d-flex justify-content-between flex-wrap">
+            <h2 class="display-6 fs-3 ">Categorias</h2>
+            <a class="btn btn-outline-primary p-1" href="/admin/categories/new"> Cadastrar nova categoria</a>
+        </div>
+        <hr>
+        <div class="overflow-auto">
+            <table class="table table-striped">
+                <thead>
+                    <th>#</th>
+                    <th>Título</th>
+                    <th>Slug</th>
+                    <th class="text-center">Ações</th>
+                </thead>
+                
+                <tbody>
+                <% content.forEach((value) => { %>
+                    <tr>
+                        <th><%= value.id %></th>
+                        <td><%= value.title %></td>
+                        <td><%= value.slug %></td>
+                        <td>
+                            <div class="d-flex flex-wrap justify-content-around">
+                                <a class="btn btn-warning btn-sm text-white mb-1 me-1" href="/admin/categories/edit/<%=value.id%>">Editar</a>
+    
+                                <form class="deleteform " method="POST" action="/categories/delete" onsubmit="confirmAction(event,this);">
+                                    <input type="hidden" name="id" value="<%= value.id %>">
+                                    <button class="btn btn-danger btn-sm">Excluir</button>
+                                 </form>
+                            </div>    
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody> 
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    function confirmAction(event, form){
+        event.preventDefault();
+        if(confirm("Você deseja apagar essa categoria?")){
+            form.submit();
+        }
+    }
+</script>
+<%- include("../../partials/footer.ejs") %>
+
